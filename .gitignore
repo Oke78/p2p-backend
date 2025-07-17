@@ -32,3 +32,5 @@ google-services.json
 
 # Android Profiling
 *.hprof
+npm init -y
+npm install express bcrypt jsonwebtoken cors
