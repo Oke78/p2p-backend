@@ -1,4 +1,132 @@
 # p2p-backend
+// utils/api.js
+import { getToken, saveToken, removeToken } from './auth';
+
+const API_URL = 'http://localhost:3000';
+
+async function request(path, options = {}) {
+  const token = await getToken();
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
+  };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(`${API_URL}${path}`, {
+    ...options,
+    headers,
+  });
+
+  if (res.status === 401) {
+    // Token ungültig oder abgelaufen
+    await removeToken();
+    throw new Error('Nicht autorisiert. Bitte neu anmelden.');
+  }
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || 'Fehler bei der Anfrage');
+  }
+  return data;
+}
+
+export async function get(path) {
+  return request(path, { method: 'GET' });
+}
+
+export async function post(path, body) {
+  return request(path, { method: 'POST', body: JSON.stringify(body) });
+}
+// utils/api.js
+import { getToken, saveToken, removeToken } from './auth';
+
+const API_URL = 'http://localhost:3000';
+
+async function request(path, options = {}) {
+  const token = await getToken();
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
+  };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(`${API_URL}${path}`, {
+    ...options,
+    headers,
+  });
+
+  if (res.status === 401) {
+    // Token ungültig oder abgelaufen
+    await removeToken();
+    throw new Error('Nicht autorisiert. Bitte neu anmelden.');
+  }
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || 'Fehler bei der Anfrage');
+  }
+  return data;
+}
+
+export async function get(path) {
+  return request(path, { method: 'GET' });
+}
+
+export async function post(path, body) {
+  return request(path, { method: 'POST', body: JSON.stringify(body) });
+}
+// utils/api.js
+import { getToken, saveToken, removeToken } from './auth';
+
+const API_URL = 'http://localhost:3000';
+
+async function request(path, options = {}) {
+  const token = await getToken();
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
+  };
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(`${API_URL}${path}`, {
+    ...options,
+    headers,
+  });
+
+  if (res.status === 401) {
+    // Token ungültig oder abgelaufen
+    await removeToken();
+    throw new Error('Nicht autorisiert. Bitte neu anmelden.');
+  }
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || 'Fehler bei der Anfrage');
+  }
+  return data;
+}
+
+export async function get(path) {
+  return request(path, { method: 'GET' });
+}
+
+export async function post(path, body) {
+  return request(path, { method: 'POST', body: JSON.stringify(body) });
+}
+
+npm install nodemailer uuid
 MONGO_URI=dein_mongodb_atlas_connection_string
 JWT_SECRET=dein_geheimer_wert
 EMAIL_USER=deine@gmail.com
