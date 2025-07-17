@@ -100,3 +100,4 @@ curl -X POST http://localhost:3000/login -H "Content-Type: application/json" -d 
 { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
 curl http://localhost:3000/balance -H "Authorization: Bearer TOKEN_HIER"
 curl -X POST http://localhost:3000/pay -H "Authorization: Bearer TOKEN_HIER" -H "Content-Type: application/json" -d '{"to":"bob","amount":10}'
+npm install mongoose
