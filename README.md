@@ -97,3 +97,4 @@ app.post('/pay', authenticateToken, (req, res) => {
 app.listen(3000, () => console.log('Server läuft auf Port 3000'));
 curl -X POST http://localhost:3000/register -H "Content-Type: application/json" -d '{"username":"alice","password":"1234"}'
 curl -X POST http://localhost:3000/login -H "Content-Type: application/json" -d '{"username":"alice","password":"1234"}'
+{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
