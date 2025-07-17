@@ -137,7 +137,6 @@ expo build:android
 git clone https://github.com/p2p-payments/backend.git
 cd backend
 mongodb+srv://USER:PASS@cluster0.xyz.mongodb.net/...)
-# Erstelle eine .env-Datei im Backend-Ordner
 cp .env.example .env
 MONGO_URI=mongodb+srv://DEIN_USER:DEIN_PASS@cluster0.xyz.mongodb.net/p2p-db?retryWrites=true&w=majority
 JWT_SECRET=ein_geheimer_string
